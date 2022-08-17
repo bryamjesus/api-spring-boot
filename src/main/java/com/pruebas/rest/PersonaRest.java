@@ -19,15 +19,18 @@ public class PersonaRest {
     }
 
     @GetMapping("/listar")
-    public List<Persona> listar(){
+    public List<Persona> listar() {
         return personaDAO.findAll();
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public void eliminar(@PathVariable("id") Integer id){
+    public void eliminar(@PathVariable("id") Integer id) {
         personaDAO.deleteById(id);
     }
 
-
+    @PutMapping("/actualizar")
+    public void actualizar(@RequestBody Persona persona){
+        personaDAO.save(persona);
+    }
 
 }
